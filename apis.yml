@@ -21,6 +21,8 @@ modified: '2026-05-04'
 specificationVersion: '0.19'
 apis: []
 common:
+  - type: DomainSecurity
+    url: security/stagwell-domain-security.yml
   - type: GitHubOrganization
     url: https://github.com/Stagwell-Marketing-Cloud
   - type: LinkedIn
@@ -29,6 +31,8 @@ common:
     url: https://www.stagwellglobal.com
   - type: MarketingCloud
     url: https://www.stagwellglobal.com/smc/
+  - url: https://www.stagwellglobal.com/feed/
+    type: Blog
 maintainers:
   - FN: API Evangelist
     url: https://apievangelist.com
