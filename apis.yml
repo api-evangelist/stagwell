@@ -3,34 +3,140 @@ url: https://raw.githubusercontent.com/api-evangelist/stagwell/refs/heads/main/a
 name: Stagwell
 type: Index
 accessModel:
-  pricing: unknown
-  onboarding: unknown
-  trial: false
+  pricing: paid
+  onboarding: approval
+  trial: true
   try_now: false
   public: false
-  label: Unknown
-  confidence: low
-  source: []
-  generated: '2026-07-22'
-  method: derived
+  label: Contract-only API access
+  confidence: medium
+  source:
+    - https://influencermarketing.ai/api/
+    - https://influencermarketing.ai/pricing/
+  generated: '2026-08-12'
+  method: searched
 image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/icons/stagwell.png
 tags:
   - Marketing
   - Advertising
   - Media
   - MarTech
+  - Influencer Marketing
+  - Market Research
+  - Creator Economy
+  - Public Relations
+  - Consumer Insights
+  - Holding Company
 description: >-
-  Stagwell is a digital-first global marketing services and technology company
-  and a Fortune 1000 firm. The company operates a network of agencies and
-  technology brands and offers the Stagwell Marketing Cloud (SMC), a suite of
-  proprietary marketing technology products built by its in-house engineering
-  teams. Stagwell does not publish a single unified public developer portal at
-  the holding-company level; product APIs are exposed through individual SMC
-  products.
+  Stagwell (NASDAQ: STGW) is a digital-first global marketing services and
+  technology company and a Fortune 1000 firm, operating a network of creative,
+  media, communications and research agencies alongside the Stagwell Marketing
+  Cloud (now branded The Marketing Cloud), a suite of proprietary SaaS and DaaS
+  marketing-technology products built by its in-house engineering teams. Stagwell
+  does not publish a unified public developer portal at the holding-company
+  level and ships no OpenAPI, AsyncAPI or agent card of its own; developer access
+  is exposed product by product. The most substantial public developer surface in
+  the group belongs to IMAI / InfluencerMarketing.ai, acquired with LEADERS in
+  July 2024 and folded into the PRophet Comms Tech suite, which publishes a
+  credit-metered REST creator-data API (Discovery and Raw), an llms.txt, and an
+  OAuth-protected Model Context Protocol endpoint on its own host.
 created: '2026-05-04'
-modified: '2026-05-04'
+modified: '2026-08-12'
 specificationVersion: '0.19'
-apis: []
+apis:
+  - name: IMAI Discovery API
+    description: >-
+      Credit-metered REST API over IMAI's creator database of 380M+ influencers
+      across Instagram, TikTok and YouTube. Documented capabilities are keyword
+      and filter search, AI search, influencer reports, audience reports,
+      performance metrics, brand collaborations and collaboration summaries, and
+      email lookup. Sold on an annual contract starting at $15,000/year with 3,000
+      credits per month; each endpoint consumes a published credit rate. Access is
+      by API key in the Authorization header. Owned by Stagwell (NASDAQ: STGW)
+      since the July 2024 LEADERS acquisition and operated inside the PRophet
+      suite of the Stagwell Marketing Cloud, which is why it lives on its own
+      domain rather than a stagwellglobal.com host.
+    humanURL: https://influencermarketing.ai/api/
+    baseURL: https://imai.co/api
+    tags:
+      - Influencer Marketing
+      - Creator Economy
+      - Search
+      - Analytics
+    properties:
+      - type: APIReference
+        url: https://imai.co/documentation
+      - type: Pricing
+        url: https://influencermarketing.ai/api/
+      - type: Plans
+        url: plans/stagwell-plans-pricing.yml
+      - type: RateLimits
+        url: rate-limits/stagwell-rate-limits.yml
+      - type: Authentication
+        url: authentication/stagwell-authentication.yml
+      - type: LLMsTxt
+        url: llms/stagwell-imai-llms.txt
+      - type: SignUp
+        url: https://imai.co/signup
+      - type: Login
+        url: https://imai.co/login
+      - type: TermsOfService
+        url: https://influencermarketing.ai/tos/
+      - type: PrivacyPolicy
+        url: https://influencermarketing.ai/privacy-policy/
+      - type: Support
+        url: https://influencermarketing.ai/contact-us/
+      - type: Blog
+        url: https://influencermarketing.ai/blog/
+  - name: IMAI Raw API
+    description: >-
+      Per-request REST API returning live, unfiltered data read directly from
+      influencer profiles — campaign post capture, mention monitoring, and brand
+      and creator collaboration timelines in real time. Metered separately from
+      Discovery credits and sold on an annual contract starting at $10,000/year
+      with 40,000 requests per month. Same host, API key and documentation as the
+      Discovery API; a Stagwell (STGW) product via IMAI / InfluencerMarketing.ai.
+    humanURL: https://influencermarketing.ai/api/
+    baseURL: https://imai.co/api
+    tags:
+      - Influencer Marketing
+      - Creator Economy
+      - Real-Time Data
+    properties:
+      - type: APIReference
+        url: https://imai.co/documentation
+      - type: Pricing
+        url: https://influencermarketing.ai/api/
+      - type: Plans
+        url: plans/stagwell-plans-pricing.yml
+      - type: RateLimits
+        url: rate-limits/stagwell-rate-limits.yml
+      - type: Authentication
+        url: authentication/stagwell-authentication.yml
+  - name: IMAI MCP Server
+    description: >-
+      OAuth-protected Model Context Protocol endpoint served on the IMAI /
+      InfluencerMarketing.ai host by the Novamira WordPress plugin, advertised
+      through RFC 9728 protected-resource metadata and an RFC 8414
+      authorization-server document. It exposes the WordPress site and content
+      surface to agents — abilities, chat, and REST skills — and is not the IMAI
+      Discovery/Raw creator-data product API. tools/list is gated: an anonymous
+      JSON-RPC call returns HTTP 401 rest_oauth_required.
+    humanURL: https://influencermarketing.ai/
+    baseURL: https://influencermarketing.ai/wp-json/mcp/novamira-oauth
+    tags:
+      - MCP
+      - Agents
+      - Content
+    properties:
+      - type: MCPServer
+        url: mcp/stagwell-mcp.yml
+      - type: OAuthScopes
+        url: scopes/stagwell-scopes.yml
+      - type: Authentication
+        url: authentication/stagwell-authentication.yml
+      - type: WellKnown
+        url: well-known/stagwell-well-known.yml
 common:
   - type: DomainSecurity
     url: security/stagwell-domain-security.yml
@@ -44,6 +150,60 @@ common:
     url: https://www.stagwellglobal.com/smc/
   - url: https://www.stagwellglobal.com/feed/
     type: Blog
+  - type: DeveloperPortal
+    url: https://influencermarketing.ai/api/
+  - type: Documentation
+    url: https://imai.co/documentation
+  - type: APIReference
+    url: https://imai.co/documentation
+  - type: Pricing
+    url: https://influencermarketing.ai/api/
+  - type: SignUp
+    url: https://imai.co/signup
+  - type: Login
+    url: https://imai.co/login
+  - type: Support
+    url: https://influencermarketing.ai/contact-us/
+  - type: TermsOfService
+    url: https://influencermarketing.ai/tos/
+  - type: PrivacyPolicy
+    url: https://www.stagwellglobal.com/privacy-policy/
+  - type: WellKnown
+    url: well-known/stagwell-well-known.yml
+  - type: MCPServer
+    url: mcp/stagwell-mcp.yml
+  - type: Authentication
+    url: authentication/stagwell-authentication.yml
+  - type: OAuthScopes
+    url: scopes/stagwell-scopes.yml
+  - type: Plans
+    url: plans/stagwell-plans-pricing.yml
+  - type: RateLimits
+    url: rate-limits/stagwell-rate-limits.yml
+  - type: LLMsTxt
+    url: llms/stagwell-imai-llms.txt
+  - type: Conformance
+    url: conformance/stagwell-conformance.yml
+  - type: VulnerabilityDisclosure
+    url: security/stagwell-vulnerability-disclosure.yml
+  - type: Security
+    url: https://influencermarketing.ai/security/
+  - type: TrustCenter
+    url: security/stagwell-trust-center.yml
+  - type: Compliance
+    url: https://influencermarketing.ai/security/
+  - type: Lifecycle
+    url: lifecycle/stagwell-lifecycle.yml
+  - type: Conventions
+    url: conventions/stagwell-conventions.yml
+  - type: Platform
+    url: https://www.themarketingcloud.com/
+x-enrichment:
+  date: '2026-08-12'
+  status: enriched
+  artifacts_added: 16
+  pass: local-v1
 maintainers:
   - FN: API Evangelist
+    email: info@apievangelist.com
     url: https://apievangelist.com

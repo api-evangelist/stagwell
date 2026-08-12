@@ -1,0 +1,35 @@
+generated: '2026-08-12'
+method: searched
+note: >-
+  Provenance index for llms/. Nothing in this directory was generated — the one
+  file present was fetched verbatim from the provider. Stagwell itself serves no
+  llms.txt: https://www.stagwellglobal.com/llms.txt and
+  https://www.themarketingcloud.com/llms.txt both return 404.
+files:
+  - file: stagwell-imai-llms.txt
+    source: https://influencermarketing.ai/llms.txt
+    http_status: 200
+    content_type: text/plain
+    fetched: '2026-08-12'
+    bytes: 7068
+    verbatim: true
+    published_by: IMAI / InfluencerMarketing.ai
+    ownership: >-
+      IMAI is a Stagwell (NASDAQ: STGW) company. Stagwell acquired LEADERS, the
+      Tel Aviv agency that built InfluencerMarketing.AI, in July 2024 and folded
+      the platform into the PRophet Comms Tech suite inside the Stagwell Marketing
+      Cloud. It is on its own domain because it was acquired, not because it
+      belongs to a third party.
+    scope: >-
+      Documents the IMAI product surface (six workspaces, solutions, comparisons,
+      case studies, blog, company pages) including the Influencer Marketing API.
+      It does not describe any other Stagwell brand.
+misses:
+  - url: https://www.stagwellglobal.com/llms.txt
+    status: 404
+  - url: https://www.themarketingcloud.com/llms.txt
+    status: 404
+  - url: https://imai.co/llms.txt
+    status: 200
+    result: miss-spa-shell
+    note: Angular catch-all returns the app HTML shell for every path; not a document.

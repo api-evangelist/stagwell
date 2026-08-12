@@ -1,0 +1,76 @@
+# IMAI - InfluencerMarketing.ai
+
+> IMAI is an award-winning influencer marketing platform with a database of 400M+ creators across Instagram, TikTok, YouTube, Twitch, and more. Brands and agencies use it to discover creators, run campaigns, track ROI, and automate payouts — all from one platform. Trusted by Estee Lauder, Playtika, Lumenis, and Argania. SOC2 Type II certified. 7-day free trial, no commitment.
+
+IMAI operates across 6 workspaces: Influencer Marketing, Consumer Intelligence, PR & Media, UGC Video Ads, LLM Visibility, and AI Agents. It serves enterprise marketing teams, agencies (white-label), eCommerce/DTC brands, and developers via API. Integrations include Shopify, Amazon, WooCommerce, BigCommerce, Magento, Stripe, Klaviyo, Zapier, and Hootsuite.
+
+
+## Platform
+
+- [Influencer Marketing Workspace](https://influencermarketing.ai/workspace-influencer-marketing/): Find, vet, recruit, brief, and manage creators at scale. Filter 400M+ profiles by audience demographics, engagement rate, follower count, fake follower detection, niche, and 50+ other parameters. Supports bulk outreach with AI-generated personalized briefs.
+- [Consumer Intelligence](https://influencermarketing.ai/consumer-intelligence/): Monitor 2 trillion+ social conversations in real time. Identify trends before they peak and brief campaigns directly from live market signals.
+- [PR & Media](https://influencermarketing.ai/pr-media/): Access a database of 1M+ journalists and target outlets that are actively cited by AI models (ChatGPT, Gemini, Perplexity). Built for earned media in the age of LLM search.
+- [UGC Video Ads](https://influencermarketing.ai/ugc-video-ads/): Source UGC content from real creators combined with AI avatar video production, delivered within 14 days.
+- [LLM Visibility](https://influencermarketing.ai/llm-visibility/): Track how your brand appears inside AI-generated answers from ChatGPT, Gemini, and Perplexity. Optimize for AI search presence.
+- [AI Agents](https://influencermarketing.ai/ai-agents/): Deploy 24/7 voice and chat agents trained on your brand and campaign data.
+- [Campaign Tracking & ROI](https://influencermarketing.ai/track-performance/): Capture posts, track sales, identify best-performing SKUs, calculate media value, and generate branded reports. Includes Influencer LiveLinks for real-time performance monitoring.
+- [Relationship Management](https://influencermarketing.ai/relationship-management/): Manage your full creator roster, communication history, contracts, and payments in one place.
+- [Creator Payouts](https://influencermarketing.ai/creator-payouts-2/): Global payment infrastructure for paying creators directly through the platform.
+- [Agency White-Label Reporting](https://influencermarketing.ai/agency-reporting-tool/): Agencies can present client-facing dashboards and reports under their own brand.
+- [Competitive Analysis](https://influencermarketing.ai/competitive-analysis/): Monitor competitor influencer activity and benchmark your share of creator voice.
+- [Influencer Marketing API](https://influencermarketing.ai/api/): Programmatic access to influencer search, data, and campaign workflows for product teams and developers.
+- [Find Influencers](https://influencermarketing.ai/find-influencers/): Entry point for creator discovery with guided filters.
+
+
+## Solutions
+
+- [Enterprise Marketing Teams](https://influencermarketing.ai/enterprise/): Full platform access with SOC2 compliance, multi-region support, and dedicated success managers.
+- [Influencer Marketing Agencies](https://influencermarketing.ai/agencies/): White-label platform, multi-client management, and reseller options.
+- [eCommerce & DTC Brands](https://influencermarketing.ai/ecommerce/): UGC ads, affiliate tracking, creator discovery, and native eCommerce integrations.
+
+
+## Compare
+
+- [Compare All Platforms](https://influencermarketing.ai/compare/)
+- [IMAI vs Modash](https://influencermarketing.ai/imai-vs-modash/)
+- [IMAI vs Influencity](https://influencermarketing.ai/imai-vs-influencity/)
+- [IMAI vs Upfluence](https://influencermarketing.ai/imai-vs-upfluence/)
+- [IMAI vs GRIN](https://influencermarketing.ai/imai-vs-grin/)
+
+
+## Case Studies
+
+- [Estee Lauder](https://influencermarketing.ai/estee-lauder/): Accelerated November sales with 4x ROI using IMAI's discovery and campaign tracking.
+- [Lumenis](https://influencermarketing.ai/lumenis/): Built brand awareness through Olympic-driven influencer campaigns.
+- [Playtika](https://influencermarketing.ai/playtika/): Scaled game awareness with creator-driven content at volume.
+- [Beluga](https://influencermarketing.ai/beluga/): Elevated luxury brand visibility with targeted creator selection.
+- [All Case Studies](https://influencermarketing.ai/case-study/)
+
+
+## Blog
+
+- [Influencer ROI Measurement: Complete Guide for Brands](https://influencermarketing.ai/blog/influencer-roi-measurement/)
+- [Cross-Platform Influencer Campaigns: Guide to Success](https://influencermarketing.ai/blog/cross-platform-influencer-campaigns/)
+- [Micro-Influencer Collaborations: Strategies for Maximum ROI](https://influencermarketing.ai/blog/micro-influencer-collaborations/)
+- [Best Influencer Marketing Platforms: 10 Top Choices for 2025](https://influencermarketing.ai/blog/best-influencer-marketing-platform/)
+- [Top 15 Influencer Marketing Tools and Platforms for 2025](https://influencermarketing.ai/blog/influencer-marketing-tools-platforms/)
+- [Influencer Marketing Management Software: Guide for 2025](https://influencermarketing.ai/blog/influencer-marketing-management-software/)
+- [Social Media Influencer Marketing Strategy](https://influencermarketing.ai/blog/social-media-influencer-marketing/)
+- [Your Guide to the Influencer Marketing Marketplace](https://influencermarketing.ai/blog/influencer-marketing-marketplace/)
+- [How to Find Influencers for Your Brand: 5 Proven Strategies](https://influencermarketing.ai/blog/how-to-find-influencers-5-proven-strategies/)
+- [How to Find Local Social Media Influencers for Your Brand](https://influencermarketing.ai/blog/find-local-social-media-influencers/)
+- [Find Niche TikTok Influencers: Tools for Brands](https://influencermarketing.ai/blog/tiktok-influencer-tools/)
+- [Find Niche Instagram Influencers](https://influencermarketing.ai/blog/find-niche-instagram-influencers-2024-guide/)
+- [The 2024 Guide to Finding YouTube Influencers for Your Brand](https://influencermarketing.ai/blog/find-youtube-influencers/)
+- [How to Find a Twitter Influencer in Your Niche](https://influencermarketing.ai/blog/find-twitter-influencers-niche/)
+- [Find Twitch Streamers for Influencer Marketing](https://influencermarketing.ai/blog/find-twitch-streamers-niche/)
+
+
+## Company
+
+- [About IMAI](https://influencermarketing.ai/about-us/)
+- [Careers](https://influencermarketing.ai/careers/)
+- [Security Center](https://influencermarketing.ai/security/)
+- [Content Library](https://influencermarketing.ai/content-library)
+- [Contact](https://influencermarketing.ai/contact-us/)
+- [Pricing](https://influencermarketing.ai/pricing/)

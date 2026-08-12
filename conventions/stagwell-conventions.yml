@@ -1,0 +1,103 @@
+generated: '2026-08-12'
+method: searched
+source: https://influencermarketing.ai/api/
+docs: https://imai.co/documentation
+note: >-
+  There is no OpenAPI to derive from anywhere in the Stagwell group, so every
+  convention below is read from the provider's own prose or observed on a live
+  anonymous request. Most rows are honest nulls: the IMAI API reference is a
+  client-rendered Angular application that serves nothing machine-readable, so
+  pagination, expansion, tracing, error envelope and versioning conventions are
+  simply not published. NO IDEMPOTENCY SUPPORT IS DOCUMENTED — no Idempotency-Key
+  header, no retry semantics, no replay window — so no Idempotency pointer is
+  emitted for this provider.
+architecture:
+  style: REST
+  claimed_properties:
+    - Predictable, resource-based endpoints and URLs built on REST principles
+    - Stateless communication with a consistent, uniform interface
+    - Clean, structured JSON request and response handling
+  source: https://influencermarketing.ai/api/
+  verified: false
+  verified_note: Provider claim; no contract published to check it against.
+media_type: application/json
+authentication:
+  style: api-key-header
+  header: Authorization
+  detail: authentication/stagwell-authentication.yml
+idempotency:
+  supported: false
+  header: null
+  scope: null
+  retention: null
+  note: Not documented. This is an absence, not a "not applicable".
+pagination:
+  style: null
+  parameters: []
+  response_fields: []
+  note: Not documented on any public page.
+field_expansion:
+  supported: null
+  note: Not documented.
+sparse_fields:
+  supported: null
+  note: Not documented.
+metadata:
+  supported: null
+  note: Not documented.
+request_tracing:
+  request_id_header: null
+  note: >-
+    No request-id or correlation-id convention is documented, and none is
+    returned on the anonymous 403 from https://imai.co/api.
+versioning:
+  strategy: null
+  detail: lifecycle/stagwell-lifecycle.yml
+error_envelope:
+  format: unspecified
+  problem_json: false
+  observed:
+    - surface: https://imai.co/api
+      body: Unauthorized
+      content_type: text/html; charset=utf-8
+      status: 403
+      note: Plain text body, not JSON — the product API's error shape is undocumented.
+    - surface: https://influencermarketing.ai/wp-json/mcp/novamira-oauth
+      body: '{"code":"rest_oauth_required","message":"OAuth authentication required.","data":{"status":401}}'
+      content_type: application/json
+      status: 401
+      note: WordPress REST error envelope {code, message, data.status} — not RFC 9457.
+  detail: null
+rate_limit_signalling:
+  headers: []
+  note: >-
+    None documented, none observed. The published limits are monthly credit and
+    request quotas, not runtime rate limits — see
+    rate-limits/stagwell-rate-limits.yml.
+metering:
+  model: credits
+  note: >-
+    Discovery API endpoints consume published fractional credit amounts per
+    result or per request; Raw API is billed per request and metered separately.
+    Unused Discovery credits roll over while the subscription is active and
+    failed requests are not billed.
+  detail: rate-limits/stagwell-rate-limits.yml
+sdk_languages_claimed:
+  - Node.js
+  - Python
+  - Java
+sdk_note: >-
+  The API page advertises "make your first API call in under five minutes across
+  Node.js, Python, Java, and more" — these are documentation code samples inside
+  the gated reference, not published client libraries. No first-party package was
+  found on npm, PyPI, RubyGems, crates.io, Packagist, NuGet, Maven Central or
+  pkg.go.dev, so no packages/ artifact and no SDKs pointer are emitted.
+x-evidence:
+  fetched: '2026-08-12'
+  probes:
+    - url: https://influencermarketing.ai/api/
+      status: 200
+    - url: https://imai.co/api
+      status: 403
+    - url: https://influencermarketing.ai/wp-json/mcp/novamira-oauth
+      status: 401

@@ -1,0 +1,70 @@
+generated: '2026-08-12'
+method: searched
+source: https://influencermarketing.ai/security/
+note: >-
+  There is no trust.<domain> host, Vanta/Drata/SafeBase portal, or downloadable
+  report request flow anywhere in the Stagwell group that a public probe could
+  reach — probe-security-programs.py returned trust=none. What exists is a
+  marketing-page "Security Center" on IMAI / InfluencerMarketing.ai (a Stagwell
+  company since the July 2024 LEADERS acquisition) that names one certification
+  and describes a security program in prose. Recorded as a published compliance
+  claim, not as an audited trust portal: no report, audit period, auditor or
+  scope statement is published, and no subprocessor list or data-residency
+  documentation was found.
+trust_center:
+  url: https://influencermarketing.ai/security/
+  name: IMAI Security Center
+  portal_type: marketing-page
+  operator: 'IMAI / InfluencerMarketing.ai (Stagwell, NASDAQ: STGW)'
+certifications:
+  - name: SOC 2 Type II
+    claimed: true
+    evidence_url: https://influencermarketing.ai/security/
+    corroboration:
+      - https://influencermarketing.ai/llms.txt
+      - https://influencermarketing.ai/pricing/
+    report_available: false
+    auditor: not published
+    audit_period: not published
+    note: >-
+      Asserted in site navigation ("SOC2 Type II"), in the provider's own
+      llms.txt, and as an Enterprise-tier feature on the pricing page. No report,
+      auditor or audit window is published.
+programs:
+  penetration_testing: true
+  vulnerability_management: true
+  incident_response: true
+  business_continuity: true
+  disaster_recovery: true
+  responsible_disclosure: true
+  bug_bounty: true
+  sso: true
+  sso_note: SSO is listed as an Enterprise-tier platform feature.
+  data_residency: true
+  data_residency_note: >-
+    "Data residency" and "multi-region" are listed as Enterprise-tier features on
+    the pricing page and in solutions navigation; no regions are named.
+not_published:
+  - ISO 27001
+  - PCI DSS
+  - HIPAA
+  - FedRAMP
+  - Subprocessor list
+  - Status page / uptime history
+  - SOC 2 report request flow
+legal:
+  privacy_policy: https://influencermarketing.ai/privacy-policy/
+  terms_of_service: https://influencermarketing.ai/tos/
+  cookie_policy: https://influencermarketing.ai/cookie-policy/
+  ai_content_notice: https://influencermarketing.ai/ai-content-acceptable-use-notice/
+  parent_privacy_policy: https://www.stagwellglobal.com/privacy-policy/
+  parent_terms_of_use: https://www.stagwellglobal.com/wp-content/uploads/2021/11/Stagwell-Inc-Terms-of-Use_Oct-2021.pdf
+x-evidence:
+  fetched: '2026-08-12'
+  probes:
+    - url: https://influencermarketing.ai/security/
+      status: 200
+    - url: https://influencermarketing.ai/pricing/
+      status: 200
+    - url: https://influencermarketing.ai/llms.txt
+      status: 200

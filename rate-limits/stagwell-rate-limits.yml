@@ -1,0 +1,95 @@
+generated: '2026-08-12'
+method: searched
+source: https://influencermarketing.ai/api/
+note: >-
+  What IMAI (a Stagwell company) publishes is a metering/quota model, not a
+  request-rate model. Monthly credit and request allowances are published per
+  plan, and a per-endpoint credit cost table is published on the API page — those
+  are recorded below as quota-class limits. NO per-second/per-minute rate limit,
+  NO burst allowance, NO 429 behaviour and NO rate-limit response headers
+  (X-RateLimit-*, RateLimit-*, Retry-After) are documented anywhere on the public
+  surface, and none could be observed because every call to https://imai.co/api
+  is rejected with 403 Unauthorized before any limit headers are emitted. That
+  runtime signal — the thing an agent actually needs — is absent.
+limits:
+  - scope: per-account
+    class: quota
+    window: month
+    limit: 3000
+    unit: credits
+    plan: Discovery API (starts at $15,000/year)
+    rollover: true
+    source: https://influencermarketing.ai/api/
+  - scope: per-account
+    class: quota
+    window: month
+    limit: 40000
+    unit: requests
+    plan: Raw API (starts at $10,000/year)
+    rollover: false
+    source: https://influencermarketing.ai/api/
+  - scope: per-account
+    class: quota
+    window: month
+    limit: null
+    unit: custom
+    plan: Enterprise
+    note: Custom limits, flexible contract; values not published.
+    source: https://influencermarketing.ai/api/
+limit_count: 3
+credit_costs:
+  unit: credits
+  endpoints:
+    - endpoint: Search
+      description: Get a list of influencers matching filters across Instagram, TikTok and YouTube.
+      cost: 0.01
+      per: result
+    - endpoint: AI Search
+      description: AI-powered search for better matching results.
+      cost: 0.025
+      per: result
+    - endpoint: Influencer Report
+      description: Detailed influencer analytics report.
+      cost: 1
+      per: request
+    - endpoint: Audience Report
+      description: Insights into audience demographics and behavior.
+      cost: 1
+      per: request
+    - endpoint: Performance
+      description: Performance metrics of influencer campaigns.
+      cost: 0.25
+      per: request
+    - endpoint: Collaborations
+      description: Track influencer brand collaborations.
+      cost: 0.2
+      per: request
+    - endpoint: Collaborations Summary
+      description: Summary of all influencer collaborations.
+      cost: 0.2
+      per: request
+    - endpoint: Email Lookup
+      description: Find influencer email addresses.
+      cost: 0.02
+      per: matched result
+  source: https://influencermarketing.ai/api/
+headers:
+  documented: false
+  observed: false
+  note: >-
+    No rate-limit response headers are documented, and none were observable — an
+    anonymous request to https://imai.co/api returns 403 with the body
+    "Unauthorized" and no RateLimit-*, X-RateLimit-* or Retry-After header.
+exhaustion:
+  status_code: null
+  note: The status code returned on quota exhaustion is not published.
+billing_behaviour:
+  failed_requests_billed: false
+  source: https://influencermarketing.ai/api/
+x-evidence:
+  fetched: '2026-08-12'
+  probes:
+    - url: https://influencermarketing.ai/api/
+      status: 200
+    - url: https://imai.co/api
+      status: 403

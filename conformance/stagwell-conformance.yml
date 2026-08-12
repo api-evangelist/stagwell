@@ -1,0 +1,140 @@
+generated: '2026-08-12'
+method: probed
+source: >-
+  well-known/stagwell-well-known.yml (verbatim RFC 8414 / RFC 9728 / OIDC
+  discovery documents fetched from influencermarketing.ai) plus the published
+  IMAI API page. No OpenAPI exists in this repo, so nothing here is derived from
+  a spec.
+note: >-
+  Everything conformant below sits on the OAuth/MCP discovery surface of IMAI /
+  InfluencerMarketing.ai, a Stagwell company. The Stagwell holding company itself
+  asserts conformance to no API standard. The product REST APIs (Discovery, Raw)
+  publish no contract, so their conformance to REST/JSON conventions is stated by
+  the provider in prose and cannot be machine-verified.
+standards:
+  - id: oauth2
+    spec: RFC 6749
+    conforms: true
+    evidence: >-
+      authorization_code + refresh_token grants with a code response type,
+      published at /.well-known/oauth-authorization-server
+  - id: oauth2-authorization-server-metadata
+    spec: RFC 8414
+    conforms: true
+    evidence: >-
+      https://influencermarketing.ai/.well-known/oauth-authorization-server
+      returns 200 application/json with issuer, authorization_endpoint,
+      token_endpoint, revocation_endpoint, introspection_endpoint,
+      registration_endpoint, response_types_supported, grant_types_supported,
+      code_challenge_methods_supported, scopes_supported
+  - id: oauth2-protected-resource-metadata
+    spec: RFC 9728
+    conforms: true
+    evidence: >-
+      https://influencermarketing.ai/.well-known/oauth-protected-resource returns
+      200 with resource, authorization_servers, bearer_methods_supported and
+      scopes_supported
+  - id: oauth2-pkce
+    spec: RFC 7636
+    conforms: true
+    evidence: 'code_challenge_methods_supported: ["S256"]'
+  - id: oauth2-dynamic-client-registration
+    spec: RFC 7591
+    conforms: true
+    evidence: >-
+      registration_endpoint
+      https://influencermarketing.ai/wp-json/novamira/v1/oauth/register
+  - id: oauth2-token-revocation
+    spec: RFC 7009
+    conforms: true
+    evidence: >-
+      revocation_endpoint
+      https://influencermarketing.ai/wp-json/novamira/v1/oauth/revoke
+  - id: oauth2-token-introspection
+    spec: RFC 7662
+    conforms: true
+    evidence: >-
+      introspection_endpoint
+      https://influencermarketing.ai/wp-json/novamira/v1/oauth/introspect
+  - id: oauth2-bearer-token
+    spec: RFC 6750
+    conforms: true
+    evidence: 'bearer_methods_supported: ["header"]'
+  - id: mcp
+    spec: Model Context Protocol
+    conforms: partial
+    evidence: >-
+      A JSON-RPC MCP endpoint is served at
+      https://influencermarketing.ai/wp-json/mcp/novamira-oauth and advertised via
+      RFC 9728 metadata, but tools/list is OAuth-gated (401 rest_oauth_required),
+      so protocol conformance beyond discovery and the auth handshake could not be
+      verified anonymously.
+  - id: openid-connect-discovery
+    spec: OpenID Connect Discovery 1.0
+    conforms: false
+    evidence: >-
+      A document is served at /.well-known/openid-configuration, but it carries
+      only OAuth 2.0 fields — no jwks_uri, userinfo_endpoint,
+      id_token_signing_alg_values_supported or subject_types_supported — so it is
+      OAuth metadata published at the OIDC path, not an OpenID Provider.
+  - id: llms-txt
+    conforms: true
+    evidence: >-
+      https://influencermarketing.ai/llms.txt returns 200 text/plain in llms.txt
+      format (H1, blockquote summary, sectioned link lists); saved verbatim to
+      llms/stagwell-imai-llms.txt
+  - id: rest
+    conforms: claimed
+    evidence: >-
+      The provider states the API uses "predictable, resource-based endpoints and
+      URLs built on REST principles", "stateless communication with a consistent,
+      uniform interface" and "clean, structured JSON". No spec is published, so
+      this is a provider claim, not a verified property.
+  - id: openapi
+    conforms: false
+    evidence: >-
+      No OpenAPI or Swagger document is served on any host probed —
+      influencermarketing.ai, imai.co, api.influencermarketing.ai,
+      api.stagwellmarketingcloud.io, platform.stagwellmarketingcloud.io,
+      www.stagwellglobal.com or www.themarketingcloud.com.
+  - id: asyncapi
+    conforms: false
+    evidence: No event, streaming or webhook surface is documented anywhere in the group.
+  - id: rfc9457-problem-details
+    conforms: false
+    evidence: >-
+      No error reference is published; observed anonymous errors are plain
+      "Unauthorized" text (imai.co/api) and WordPress-shaped JSON
+      {code,message,data.status} on the REST/MCP routes — neither is
+      application/problem+json.
+  - id: rfc9116-security-txt
+    conforms: false
+    evidence: 404 on /.well-known/security.txt on every host probed
+  - id: a2a-agent-card
+    conforms: false
+    evidence: >-
+      404 on /.well-known/agent-card.json and /.well-known/agent.json on every
+      real host; imai.co returns an SPA HTML shell with status 200, which is a
+      miss, not a card.
+  - id: idempotency
+    conforms: false
+    evidence: No idempotency key, header or retry semantics are documented.
+  - id: soc2-type-ii
+    conforms: claimed
+    evidence: >-
+      Asserted on https://influencermarketing.ai/security/, in the provider's
+      llms.txt and on the pricing page; no report or auditor published. See
+      security/stagwell-trust-center.yml.
+x-evidence:
+  fetched: '2026-08-12'
+  probes:
+    - url: https://influencermarketing.ai/.well-known/oauth-authorization-server
+      status: 200
+    - url: https://influencermarketing.ai/.well-known/oauth-protected-resource
+      status: 200
+    - url: https://influencermarketing.ai/.well-known/openid-configuration
+      status: 200
+    - url: https://influencermarketing.ai/llms.txt
+      status: 200
+    - url: https://influencermarketing.ai/.well-known/agent-card.json
+      status: 404

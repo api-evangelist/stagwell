@@ -1,0 +1,156 @@
+generated: '2026-08-12'
+method: searched
+source: https://influencermarketing.ai/api/
+also_source: https://influencermarketing.ai/pricing/
+note: >-
+  Stagwell (NASDAQ: STGW) is a holding company and publishes no pricing for a
+  developer product at the parent level. The only published, itemized API pricing
+  on a Stagwell-owned property is IMAI / InfluencerMarketing.ai (a Stagwell
+  company since the July 2024 LEADERS acquisition, part of the PRophet suite in
+  the Stagwell Marketing Cloud). Two API products are priced publicly, plus five
+  platform SaaS tiers. All API plans are annual and contract-based — the provider
+  states explicitly that it does not offer monthly or pay-as-you-go API plans,
+  and payment is by bank transfer only.
+currency: USD
+plans:
+  - name: Discovery API
+    product: IMAI Discovery API
+    price: 15000
+    price_qualifier: starts at
+    currency: USD
+    billing_period: year
+    included_quota: 3000 credits per month
+    unit_price: 0.45 per credit
+    overage: >-
+      Credit price decreases with volume ("pay less per credit as you scale");
+      exact tiering is not published. Unused Discovery credits roll over month to
+      month while the subscription remains active. Failed requests are not billed.
+    limits:
+      credits_per_month: 3000
+      rollover: true
+    includes:
+      - Dedicated account manager
+      - Onboarding and ongoing follow-ups
+    source: https://influencermarketing.ai/api/
+  - name: Raw API
+    product: IMAI Raw API
+    price: 10000
+    price_qualifier: starts at
+    currency: USD
+    billing_period: year
+    included_quota: 40000 requests per month
+    unit_price: 0.02 per request
+    overage: >-
+      Per-request price decreases with volume ("pay less per request as you
+      scale"); exact tiering is not published. Raw API usage is metered separately
+      from Discovery credits.
+    limits:
+      requests_per_month: 40000
+    includes:
+      - Dedicated account manager
+      - Onboarding and ongoing follow-ups
+    source: https://influencermarketing.ai/api/
+  - name: Enterprise (API)
+    product: IMAI API
+    price: null
+    price_qualifier: custom
+    currency: USD
+    billing_period: year
+    included_quota: custom limits
+    overage: null
+    note: For teams requiring higher usage limits and enhanced control options; flexible contract.
+    source: https://influencermarketing.ai/api/
+  - name: Personal
+    product: IMAI platform (SaaS)
+    price: 129
+    currency: USD
+    billing_period: month
+    limits:
+      seats: 1
+      creator_unlocks_per_month: 20
+      creator_analyses_per_month: 5
+      email_exports_per_month: 25
+    api_access: false
+    source: https://influencermarketing.ai/pricing/
+  - name: Starter
+    product: IMAI platform (SaaS)
+    price: 299
+    currency: USD
+    billing_period: month
+    limits:
+      seats: 2
+      creator_unlocks_per_month: 75
+      creator_analyses_per_month: 20
+      email_exports_per_month: 100
+      lists: 1
+    api_access: false
+    source: https://influencermarketing.ai/pricing/
+  - name: Growth
+    product: IMAI platform (SaaS)
+    price: 499
+    currency: USD
+    billing_period: month
+    limits:
+      seats: 4
+      creator_unlocks_per_month: 200
+      creator_analyses_per_month: 50
+      email_exports_per_month: 300
+      active_campaigns: 5
+      lists: unlimited
+    api_access: true
+    api_note: Lowest platform tier that includes API and integrations access.
+    source: https://influencermarketing.ai/pricing/
+  - name: Scale
+    product: IMAI platform (SaaS)
+    price: 1200
+    currency: USD
+    billing_period: month
+    limits:
+      seats: 7
+      creator_unlocks_per_month: 500
+      creator_analyses_per_month: 125
+      email_exports_per_month: 750
+      active_campaigns: 12
+      lists: unlimited
+    api_access: true
+    source: https://influencermarketing.ai/pricing/
+  - name: Enterprise (platform)
+    product: IMAI platform (SaaS)
+    price: null
+    price_qualifier: custom
+    currency: USD
+    billing_period: year
+    limits:
+      seats: unlimited
+    includes:
+      - All six workspaces
+      - SSO
+      - SOC 2
+      - Data residency
+      - Dedicated CSM
+    api_access: true
+    source: https://influencermarketing.ai/pricing/
+plan_count: 8
+trial:
+  available: true
+  length_days: 14
+  credit_card_required: false
+  note: >-
+    The platform advertises a 14-day free trial on the pricing page and a "7-day
+    free trial" in site navigation and llms.txt — the provider's own surfaces
+    disagree. API access itself has no self-serve trial; testing credits are
+    issued by an account manager after a scheduled call.
+  source: https://influencermarketing.ai/pricing/
+discounts:
+  - type: annual
+    amount: 20%
+    applies_to: IMAI platform (SaaS) tiers
+payment_methods:
+  - bank transfer (API subscriptions)
+x-evidence:
+  fetched: '2026-08-12'
+  probes:
+    - url: https://influencermarketing.ai/api/
+      status: 200
+    - url: https://influencermarketing.ai/pricing/
+      status: 200

@@ -1,0 +1,89 @@
+generated: '2026-08-12'
+method: searched
+source: >-
+  Live probes of the /.well-known/ surface on every Stagwell-controlled host in
+  this profile. Stagwell is a holding company; the only Stagwell property that
+  serves real /.well-known/ documents is influencermarketing.ai (IMAI), the
+  influencer-marketing SaaS platform Stagwell acquired with LEADERS in July 2024
+  and folded into the PRophet suite inside the Stagwell Marketing Cloud.
+note: >-
+  Three of the five canonical paths return real JSON documents on
+  influencermarketing.ai — an OIDC discovery document, an RFC 8414 OAuth
+  authorization-server metadata document, and an RFC 9728 OAuth protected-resource
+  metadata document. All three are emitted by the "Novamira" WordPress plugin that
+  fronts the site's Model Context Protocol server; the protected resource they
+  point at is https://influencermarketing.ai/wp-json/mcp/novamira-oauth. No
+  security.txt is served on any host, so no SecurityTxt pointer is emitted. The
+  Stagwell corporate host and themarketingcloud.com return 404/"Invalid
+  .well-known request" on every path probed.
+hosts:
+  - host: https://influencermarketing.ai
+    owner_note: >-
+      IMAI / InfluencerMarketing.ai — a Stagwell (NASDAQ: STGW) company since the
+      July 2024 LEADERS acquisition; part of the PRophet Comms Tech suite in the
+      Stagwell Marketing Cloud.
+    documents:
+      - path: /.well-known/openid-configuration
+        status: 200
+        content_type: application/json
+        file: stagwell-openid-configuration.json
+      - path: /.well-known/oauth-authorization-server
+        status: 200
+        content_type: application/json
+        file: stagwell-oauth-authorization-server.json
+      - path: /.well-known/oauth-protected-resource
+        status: 200
+        content_type: application/json
+        file: stagwell-oauth-protected-resource.json
+      - path: /.well-known/security.txt
+        status: 404
+      - path: /.well-known/api-catalog
+        status: 404
+      - path: /.well-known/ai-plugin.json
+        status: 404
+      - path: /.well-known/agent-card.json
+        status: 404
+      - path: /.well-known/agent.json
+        status: 404
+  - host: https://www.stagwellglobal.com
+    documents:
+      - path: /.well-known/security.txt
+        status: 404
+      - path: /.well-known/agent-card.json
+        status: 404
+  - host: https://www.themarketingcloud.com
+    documents:
+      - path: /.well-known/security.txt
+        status: 404
+        note: responds with an HTML body reading "Invalid .well-known request"
+      - path: /.well-known/agent-card.json
+        status: 404
+  - host: https://imai.co
+    note: >-
+      Angular single-page application with a catch-all route — every
+      /.well-known/* path returns HTTP 200 with the app's HTML shell. Treated as a
+      MISS, not a hit; no document was served.
+    documents:
+      - path: /.well-known/agent-card.json
+        status: 200
+        content_type: text/html
+        result: miss-spa-shell
+      - path: /.well-known/ai-plugin.json
+        status: 200
+        content_type: text/html
+        result: miss-spa-shell
+x-evidence:
+  fetched: '2026-08-12'
+  probes:
+    - url: https://influencermarketing.ai/.well-known/openid-configuration
+      status: 200
+    - url: https://influencermarketing.ai/.well-known/oauth-authorization-server
+      status: 200
+    - url: https://influencermarketing.ai/.well-known/oauth-protected-resource
+      status: 200
+    - url: https://influencermarketing.ai/.well-known/security.txt
+      status: 404
+    - url: https://www.stagwellglobal.com/.well-known/security.txt
+      status: 404
+    - url: https://www.themarketingcloud.com/.well-known/security.txt
+      status: 404

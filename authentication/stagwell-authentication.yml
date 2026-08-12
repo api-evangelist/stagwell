@@ -1,0 +1,84 @@
+generated: '2026-08-12'
+method: searched
+source: https://influencermarketing.ai/api/
+docs: https://imai.co/documentation
+note: >-
+  Stagwell (the holding company) publishes no developer authentication surface of
+  its own. Two distinct auth models exist on Stagwell-owned properties, both on
+  IMAI / InfluencerMarketing.ai (a Stagwell company since the July 2024 LEADERS
+  acquisition, inside the PRophet suite of the Stagwell Marketing Cloud): an API
+  key for the IMAI Discovery/Raw product APIs, and a full OAuth 2.0 authorization
+  server for the site's MCP endpoint. No OpenAPI is published, so none of this is
+  derived from a spec — it is read from the provider's own pages and from live
+  anonymous discovery documents.
+schemes:
+  - id: imai-api-key
+    applies_to: IMAI Discovery API, IMAI Raw API
+    type: apiKey
+    in: header
+    name: Authorization
+    base_url: https://imai.co/api
+    obtained_via: >-
+      Contract-based sale only. The provider states "we currently do not offer
+      monthly or pay-as-you-go plans. All plans are contract-based", and testing
+      credits are issued by an account manager after a scheduled call — there is
+      no self-serve API key issuance.
+    source: https://influencermarketing.ai/api/
+    evidence: >-
+      The published API page documents an Authorization header carrying an API
+      key; https://imai.co/api answers HTTP 403 with the plain body "Unauthorized"
+      to an anonymous request, and the IMAI web application bundle
+      (https://imai.co/main.a29b2d4cf73bd5fe.js) carries https://imai.co/api as
+      the production API root (with https://dev.influencermarketing.ai/api as the
+      development root).
+    confidence: medium
+    confidence_note: >-
+      The header name and key style are stated on the public API page and by the
+      provider's own documentation index, but the full reference at
+      https://imai.co/documentation is a client-rendered Angular application that
+      serves no machine-readable contract to an anonymous client, so parameter-level
+      detail could not be verified.
+  - id: novamira-oauth2
+    applies_to: IMAI MCP server (Novamira)
+    type: oauth2
+    protected_resource: https://influencermarketing.ai/wp-json/mcp/novamira-oauth
+    issuer: https://influencermarketing.ai
+    flows:
+      - flow: authorizationCode
+        authorizationUrl: https://influencermarketing.ai/wp-admin/admin.php?page=novamira-oauth-authorize
+        tokenUrl: https://influencermarketing.ai/wp-json/novamira/v1/oauth/token
+        pkce: S256
+        scopes:
+          mcp: Access the site's Model Context Protocol server
+    grant_types_supported: [authorization_code, refresh_token]
+    response_types_supported: [code]
+    token_endpoint_auth_methods_supported: [none]
+    bearer_methods_supported: [header]
+    dynamic_client_registration: https://influencermarketing.ai/wp-json/novamira/v1/oauth/register
+    revocation_endpoint: https://influencermarketing.ai/wp-json/novamira/v1/oauth/revoke
+    introspection_endpoint: https://influencermarketing.ai/wp-json/novamira/v1/oauth/introspect
+    source: https://influencermarketing.ai/.well-known/oauth-authorization-server
+    confidence: high
+    confidence_note: >-
+      Read verbatim from anonymous RFC 8414 / OIDC discovery documents served by
+      the provider; saved to well-known/.
+mtls: false
+openid_connect:
+  discovery: https://influencermarketing.ai/.well-known/openid-configuration
+  note: >-
+    An OIDC-shaped discovery document is served, but it advertises only the
+    OAuth 2.0 code flow for the "mcp" scope — no id_token, userinfo or jwks
+    endpoints are present, so this is OAuth 2.0 discovery published at the OIDC
+    path rather than a conformant OpenID Provider.
+x-evidence:
+  fetched: '2026-08-12'
+  probes:
+    - url: https://imai.co/api
+      status: 403
+      response: Unauthorized
+    - url: https://influencermarketing.ai/.well-known/oauth-authorization-server
+      status: 200
+    - url: https://influencermarketing.ai/.well-known/openid-configuration
+      status: 200
+    - url: https://influencermarketing.ai/api/
+      status: 200

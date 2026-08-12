@@ -1,0 +1,37 @@
+generated: '2026-08-12'
+method: probed
+source: https://influencermarketing.ai/.well-known/oauth-authorization-server
+note: >-
+  No OpenAPI is published anywhere in this profile, so derive-oauth-scopes.py has
+  no spec to read. The scope surface recorded here comes straight from the
+  anonymous RFC 8414 authorization-server metadata and the RFC 9728
+  protected-resource metadata served by influencermarketing.ai (IMAI, a Stagwell
+  company). Exactly one scope is advertised. The IMAI Discovery and Raw product
+  APIs use an API key, not OAuth, and therefore have no scope surface at all.
+schemes:
+  - name: novamira-oauth
+    issuer: https://influencermarketing.ai
+    source: https://influencermarketing.ai/.well-known/oauth-authorization-server
+    flows:
+      - flow: authorizationCode
+        authorizationUrl: https://influencermarketing.ai/wp-admin/admin.php?page=novamira-oauth-authorize
+        tokenUrl: https://influencermarketing.ai/wp-json/novamira/v1/oauth/token
+        code_challenge_methods_supported: [S256]
+scopes:
+  - name: mcp
+    description: >-
+      Access the Model Context Protocol server at
+      https://influencermarketing.ai/wp-json/mcp/novamira-oauth. The provider
+      publishes no per-tool or finer-grained scope decomposition; "mcp" is the
+      only value in scopes_supported on both the authorization-server and the
+      protected-resource metadata.
+    source: /.well-known/oauth-authorization-server
+    applies_to: https://influencermarketing.ai/wp-json/mcp/novamira-oauth
+scope_count: 1
+x-evidence:
+  fetched: '2026-08-12'
+  probes:
+    - url: https://influencermarketing.ai/.well-known/oauth-authorization-server
+      status: 200
+    - url: https://influencermarketing.ai/.well-known/oauth-protected-resource
+      status: 200

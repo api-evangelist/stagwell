@@ -1,11 +1,21 @@
-generated: '2026-07-11'
+generated: '2026-08-12'
 method: probed
 source: live DNS/TLS/HTTP probes of apis.yml + OpenAPI hosts
 hosts:
 - host: www.stagwellglobal.com
   https: true
   tls_version: TLSv1.3
-  cert_expires: Aug 25 16:19:38 2026 GMT
+  cert_expires: Oct 23 17:25:38 2026 GMT
+  hsts: false
+- host: influencermarketing.ai
+  https: true
+  tls_version: TLSv1.3
+  cert_expires: Oct 25 02:38:40 2026 GMT
+  hsts: false
+- host: imai.co
+  https: true
+  tls_version: TLSv1.3
+  cert_expires: Nov  8 05:00:26 2026 GMT
   hsts: false
 domains:
 - domain: stagwellglobal.com
@@ -14,3 +24,15 @@ domains:
   spf: true
   dmarc: true
   dmarc_policy: none
+- domain: influencermarketing.ai
+  dnssec: false
+  caa:
+  - 0 issue "digicert.com; cansignhttpexchanges=yes"
+  - 0 issue "letsencrypt.org"
+  - 0 issue "pki.goog; cansignhttpexchanges=yes"
+  - 0 issue "ssl.com"
+  - 0 issuewild "comodoca.com"
+  - 0 issuewild "digicert.com; cansignhttpexchanges=yes"
+  spf: true
+  dmarc: true
+  dmarc_policy: quarantine

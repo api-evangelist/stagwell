@@ -1,0 +1,68 @@
+generated: '2026-08-12'
+method: searched
+source: https://influencermarketing.ai/api/
+note: >-
+  Searched for a versioning policy, a deprecation/sunset policy, an SLA and a
+  status page across the Stagwell holding-company site, The Marketing Cloud site
+  and the IMAI / InfluencerMarketing.ai product surface. None exists. This is the
+  weakest area of the group's public developer posture: there is no way for a
+  consumer to learn what version they are calling, what notice they would get
+  before a breaking change, or whether the service is up right now. Recorded as
+  measured absence — no artifact was invented to fill it.
+versioning:
+  scheme: null
+  current: null
+  docs: null
+  note: >-
+    The API base https://imai.co/api carries no version segment and the provider
+    publishes no version identifier, header or policy. The WordPress-side surfaces
+    are versioned by namespace (/wp-json/novamira/v1, rest_api_version 1), which
+    is plugin versioning, not a product API contract.
+deprecation:
+  policy_url: null
+  sunset_header: unknown
+  notice_period: null
+  note: No deprecation or sunset policy is published; RFC 8594 support is undocumented and unobservable anonymously.
+sla:
+  url: null
+  uptime_target: null
+  note: >-
+    No SLA is published. The Enterprise tiers reference a dedicated account
+    manager and CSM but no availability commitment.
+status_page: null
+status_page_note: >-
+  status.influencermarketing.ai does not resolve; /status/ returns 404 on
+  influencermarketing.ai; no Statuspage, Instatus or BetterStack property was
+  found for Stagwell, The Marketing Cloud or IMAI.
+changelog: null
+changelog_note: >-
+  /changelog/ returns 404 on influencermarketing.ai and no dated API release
+  notes were found. Product announcements are published as corporate press
+  releases on https://www.stagwellglobal.com/feed/ (mirrored in blogs/), which is
+  news, not a version history.
+deprecated_operations: []
+retired_surfaces:
+  - name: Koupon Media API
+    former_url: https://www.kouponmedia.com/api/intro
+    status: 301
+    redirects_to: https://www.pdisoftware.com/welcome-koupon-visitors/
+    note: >-
+      Koupon Media was a Stagwell Marketing Cloud product with a public developer
+      API. As of this probe its entire developer surface 301-redirects to PDI
+      Software; api.kouponmedia.com still answers but returns
+      {"status":403,"message":"Access denied!"}. It is no longer a Stagwell API
+      and is recorded here only so a future run does not re-harvest it.
+x-evidence:
+  fetched: '2026-08-12'
+  probes:
+    - url: https://influencermarketing.ai/status/
+      status: 404
+    - url: https://influencermarketing.ai/changelog/
+      status: 404
+    - url: https://status.influencermarketing.ai/
+      status: 0
+      note: DNS does not resolve
+    - url: https://www.kouponmedia.com/api/intro
+      status: 301
+    - url: https://api.kouponmedia.com/
+      status: 403
