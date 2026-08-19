@@ -2,17 +2,13 @@ generated: '2026-08-12'
 method: probed
 status: published
 source: https://influencermarketing.ai/.well-known/oauth-protected-resource
-note: >-
-  Stagwell publishes no MCP server at the holding-company level. The one live MCP
-  endpoint on a Stagwell-controlled host belongs to IMAI /
-  InfluencerMarketing.ai (a Stagwell company since the July 2024 LEADERS
-  acquisition, part of the PRophet suite in the Stagwell Marketing Cloud). It is
-  served by the "Novamira" WordPress plugin (v1.11.2) that fronts the IMAI
-  marketing site, and it is advertised through RFC 9728 protected-resource
-  metadata. IMPORTANT — this server exposes the WordPress site/content surface to
-  agents (site authoring, chat, abilities, REST "skills"); it is NOT the IMAI
-  Discovery/Raw creator-data product API, which is a separate REST service at
-  https://imai.co/api behind an API key. Do not read this artifact as evidence
+note: Stagwell publishes no MCP server at the holding-company level. The one live MCP endpoint on a Stagwell-controlled
+  host belongs to IMAI / InfluencerMarketing.ai (a Stagwell company since the July 2024 LEADERS acquisition,
+  part of the PRophet suite in the Stagwell Marketing Cloud). It is served by the "Novamira" WordPress
+  plugin (v1.11.2) that fronts the IMAI marketing site, and it is advertised through RFC 9728 protected-resource
+  metadata. IMPORTANT — this server exposes the WordPress site/content surface to agents (site authoring,
+  chat, abilities, REST "skills"); it is NOT the IMAI Discovery/Raw creator-data product API, which is
+  a separate REST service at https://imai.co/api behind an API key. Do not read this artifact as evidence
   that the IMAI product API is MCP-addressable.
 server:
   name: novamira-oauth
@@ -28,42 +24,57 @@ server:
     rest_skills: true
     generalized_execution_shim: true
 sibling_endpoints:
-  - url: https://influencermarketing.ai/wp-json/mcp/novamira
-    methods: [POST, GET, DELETE]
-  - url: https://influencermarketing.ai/wp-json/mcp/mcp-adapter-default-server
-    methods: [POST, GET, DELETE]
+- url: https://influencermarketing.ai/wp-json/mcp/novamira
+  methods:
+  - POST
+  - GET
+  - DELETE
+- url: https://influencermarketing.ai/wp-json/mcp/mcp-adapter-default-server
+  methods:
+  - POST
+  - GET
+  - DELETE
 authentication:
   scheme: oauth2
   gated: true
-  bearer_methods_supported: [header]
-  scopes_supported: [mcp]
+  bearer_methods_supported:
+  - header
+  scopes_supported:
+  - mcp
   authorization_servers:
-    - https://influencermarketing.ai
-  grant_types_supported: [authorization_code, refresh_token]
-  code_challenge_methods_supported: [S256]
+  - https://influencermarketing.ai
+  grant_types_supported:
+  - authorization_code
+  - refresh_token
+  code_challenge_methods_supported:
+  - S256
   dynamic_client_registration: https://influencermarketing.ai/wp-json/novamira/v1/oauth/register
   details: authentication/stagwell-authentication.yml
 tools:
   discovered: false
-  reason: >-
-    POST {"jsonrpc":"2.0","id":1,"method":"tools/list"} to the endpoint returns
-    HTTP 401 {"code":"rest_oauth_required","message":"OAuth authentication
-    required."}. The live tool list and per-tool inputSchema require an
-    authenticated OAuth bearer token; no anonymous tools/list is served and no
-    published tool catalog exists, so no tool list is recorded here rather than a
-    guessed one.
+  reason: POST {"jsonrpc":"2.0","id":1,"method":"tools/list"} to the endpoint returns HTTP 401 {"code":"rest_oauth_required","message":"OAuth
+    authentication required."}. The live tool list and per-tool inputSchema require an authenticated OAuth
+    bearer token; no anonymous tools/list is served and no published tool catalog exists, so no tool list
+    is recorded here rather than a guessed one.
 x-evidence:
   fetched: '2026-08-12'
   probes:
-    - url: https://influencermarketing.ai/.well-known/oauth-protected-resource
-      status: 200
-      content_type: application/json
-    - url: https://influencermarketing.ai/wp-json/mcp
-      status: 200
-      content_type: application/json
-      note: WordPress REST route index listing the three /wp-json/mcp/* servers
-    - url: https://influencermarketing.ai/wp-json/mcp/novamira-oauth
-      method: POST
-      body: '{"jsonrpc":"2.0","id":1,"method":"tools/list"}'
-      status: 401
-      response: '{"code":"rest_oauth_required","message":"OAuth authentication required."}'
+  - url: https://influencermarketing.ai/.well-known/oauth-protected-resource
+    status: 200
+    content_type: application/json
+  - url: https://influencermarketing.ai/wp-json/mcp
+    status: 200
+    content_type: application/json
+    note: WordPress REST route index listing the three /wp-json/mcp/* servers
+  - url: https://influencermarketing.ai/wp-json/mcp/novamira-oauth
+    method: POST
+    body: '{"jsonrpc":"2.0","id":1,"method":"tools/list"}'
+    status: 401
+    response: '{"code":"rest_oauth_required","message":"OAuth authentication required."}'
+deployment:
+  mode: remote
+  endpoint: https://influencermarketing.ai/wp-json/mcp/novamira-oauth
+  verified: probed
+  probe: gated
+  checked: '2026-08-12'
+  source: catalog MCP census
