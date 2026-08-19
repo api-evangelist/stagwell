@@ -42,7 +42,7 @@ description: >-
   OAuth-protected Model Context Protocol endpoint on its own host.
 created: '2026-05-04'
 modified: '2026-08-12'
-specificationVersion: '0.19'
+specificationVersion: '0.23'
 apis:
   - name: IMAI Discovery API
     description: >-
