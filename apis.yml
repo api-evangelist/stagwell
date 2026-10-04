@@ -148,6 +148,9 @@ apis:
         url: authentication/stagwell-authentication.yml
       - type: WellKnown
         url: well-known/stagwell-well-known.yml
+    x-surface: platform-generated
+    x-platform: wordpress
+    x-platform-surface: mcp-plugin
 common:
   - type: DomainSecurity
     url: security/stagwell-domain-security.yml
